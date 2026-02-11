@@ -8,7 +8,6 @@
         <outputRelativeToContentRoot value="true" />
         <module name="notification" />
         <module name="config-server" />
-        <module name="eureka" />
         <module name="candidat" />
         <module name="ConfigServer" />
         <module name="Job" />
@@ -17,6 +16,8 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="condidature" target="1.5" />
+      <module name="eureka" target="17" />
+      <module name="job" target="17" />
       <module name="meeting" target="1.5" />
     </bytecodeTargetLevel>
   </component>
@@ -29,6 +30,7 @@
       <module name="config-server" options="-parameters" />
       <module name="eureka" options="-parameters" />
       <module name="gateway" options="-parameters" />
+      <module name="job" options="-parameters" />
       <module name="meeting" options="" />
       <module name="notification" options="-parameters" />
     </option>
