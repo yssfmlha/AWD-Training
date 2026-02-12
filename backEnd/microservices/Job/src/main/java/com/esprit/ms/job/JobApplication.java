@@ -14,7 +14,7 @@ public class JobApplication {
     public static void main(String[] args) {
         SpringApplication.run(JobApplication.class, args);
     }
-    @Autowired
+    /*@Autowired
     private JobRepository jobRepository;
     @Bean
     ApplicationRunner init() {
@@ -26,5 +26,5 @@ public class JobApplication {
             // fetch
             jobRepository.findAll().forEach(System.out::println);
         };
-    }
+    }*/
 }

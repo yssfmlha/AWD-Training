@@ -19,11 +19,11 @@ public class JobRestAPI {
         return hello;
     }
 
-    @Autowired
+    /*@Autowired
     private JobService jobService;
 
     @RequestMapping
     public ResponseEntity<List<Job>> getAll() {
         return new ResponseEntity<>(jobService.getAll(), HttpStatus.OK);
-    }
+    }*/
 }

@@ -20,7 +20,7 @@ public class CandidatRestAPI {
         return title;
     }
 
-    @Autowired
+    /*@Autowired
     private CandidatService candidatService;
     @PostMapping(consumes = MediaType.APPLICATION_XML_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
@@ -43,5 +43,5 @@ public class CandidatRestAPI {
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<String> deleteCandidat(@PathVariable(value = "id") int id){
         return new ResponseEntity<>(candidatService.deleteCandidat(id), HttpStatus.OK);
-    }
+    }*/
 }
