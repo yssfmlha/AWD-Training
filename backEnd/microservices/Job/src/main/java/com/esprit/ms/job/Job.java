@@ -1,4 +1,4 @@
-/*package com.esprit.ms.job;
+package com.esprit.ms.job;
 
 
 import jakarta.persistence.Entity;
@@ -48,4 +48,4 @@ public class Job {
     public void setEtat(boolean etat) {
         this.etat = etat;
     }
-}*/
+}

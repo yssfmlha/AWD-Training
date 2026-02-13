@@ -1,4 +1,4 @@
-/*package com.esprit.ms.job;
+package com.esprit.ms.job;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,4 +35,4 @@ public class JobService {
         } else
             return "Job non supprimé";
     }
-}*/
+}

@@ -1,8 +1,8 @@
-package com.esprit.ms.job;
+package tn.esprit.spring.journal;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface JobRepository extends  JpaRepository<Job , Integer> {
+public interface JournalRepository extends JpaRepository<Journal, Long> {
 }
