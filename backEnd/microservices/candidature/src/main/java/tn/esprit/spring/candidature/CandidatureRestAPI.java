@@ -13,7 +13,7 @@ import java.util.List;
 public class CandidatureRestAPI {
     private String title = "Hello, i'm the candidature Micro-Service";
 
-    @RequestMapping("/hello")
+    @GetMapping("/hello")
     public String sayHello() {
         System.out.println(title);
         return title;
