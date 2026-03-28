@@ -10,6 +10,16 @@ import java.util.Optional;
 public class CandidatService {
     @Autowired
     private CandidatRepository candidatRepository;
+    private JobClient jobServiceClient;
+
+    public List<Job> getAllJobs() {
+        return jobServiceClient.getAllJobs();
+    }
+
+    public Job getJobById(int id) {
+        return jobServiceClient.getJobById(id);
+    }
+
     public List<Candidat> findAll() {
         return candidatRepository.findAll();
     }

@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("mic1/candidats")
-public class CandidatRestAPI {
+public class CandidatRESTApi {
     //simple web service for testing
     @GetMapping("/hello")
     public String sayHello() {
@@ -76,5 +76,14 @@ public class CandidatRestAPI {
             return ResponseEntity.noContent().build();
         }
         return ResponseEntity.notFound().build();
+    }
+
+    @GetMapping("/jobs")
+    public ResponseEntity<List<Job>> getAllJobs() {
+        return ResponseEntity.ok(candidatService.getAllJobs());
+    }
+    @GetMapping("/jobs/{id}")
+    public ResponseEntity<Job> getJobById(@PathVariable int id) {
+        return ResponseEntity.ok(candidatService.getJobById(id));
     }
 }
