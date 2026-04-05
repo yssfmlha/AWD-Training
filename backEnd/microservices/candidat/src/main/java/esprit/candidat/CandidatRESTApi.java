@@ -1,6 +1,7 @@
 package esprit.candidat;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -18,9 +19,15 @@ public class CandidatRESTApi {
     }
     @Autowired
     private CandidatService candidatService;
-    // =======================
-    // READ ALL
-    // =======================
+
+    @Value("${welcome.message}")
+    private String welcomeMessage;
+
+    @GetMapping("/welcome")
+    public String welcome() {
+        return welcomeMessage;
+    }
+
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Candidat>> listCandidat() {
         return ResponseEntity.ok(candidatService.findAll());

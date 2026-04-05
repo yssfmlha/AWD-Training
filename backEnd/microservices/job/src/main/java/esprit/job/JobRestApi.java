@@ -1,14 +1,87 @@
 package esprit.job;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
-@RequestMapping("/mic2/job")
+@RequestMapping("mic2/job")
 public class JobRestApi {
-    @GetMapping
+
+    @Autowired
+    private JobService jobService;
+
+    @Value("${welcome.message}")
+    private String welcomeMessage;
+
+
+    @GetMapping("/welcome")
+    public String welcome() {
+        return welcomeMessage;
+    }
+
+    // ================= HELLO =================
+    @GetMapping("/hello")
     public String sayHello() {
-        return "Hello mic2";
+        return "Hello, I'm the Job MS";
+    }
+
+    // ================= GET ALL =================
+    @GetMapping
+    public ResponseEntity<List<Job>> getAll() {
+        return ResponseEntity.ok(jobService.getAll());
+    }
+
+    // ================= GET BY ID =================
+    @GetMapping("/{id}")
+    public ResponseEntity<Job> getById(@PathVariable int id) {
+        return ResponseEntity.ok(jobService.getById(id));
+    }
+
+    // ================= CREATE =================
+    @PostMapping
+    public ResponseEntity<Job> addJob(@RequestBody Job job) {
+        return new ResponseEntity<>(jobService.addJob(job), HttpStatus.CREATED);
+    }
+
+    // ================= UPDATE =================
+    @PutMapping("/{id}")
+    public ResponseEntity<Job> updateJob(@PathVariable int id,
+                                         @RequestBody Job job) {
+        return ResponseEntity.ok(jobService.updateJob(id, job));
+    }
+
+    // ================= DELETE =================
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteJob(@PathVariable int id) {
+        return ResponseEntity.ok(jobService.deleteJob(id));
+    }
+
+    // ================= SEARCH =================
+
+    // Search by title
+    @GetMapping("/search/title")
+    public ResponseEntity<List<Job>> searchByTitle(@RequestParam String title) {
+        return ResponseEntity.ok(jobService.searchByTitle(title));
+    }
+
+    // Search by availability
+    @GetMapping("/search/available")
+    public ResponseEntity<List<Job>> searchByAvailability(@RequestParam boolean available) {
+        return ResponseEntity.ok(jobService.searchByAvailability(available));
+    }
+
+    // Search by title AND availability
+    @GetMapping("/search")
+    public ResponseEntity<List<Job>> searchByTitleAndAvailability(
+            @RequestParam String title,
+            @RequestParam boolean available) {
+
+        return ResponseEntity.ok(
+                jobService.searchByTitleAndAvailability(title, available));
     }
 }
