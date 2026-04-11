@@ -1,6 +1,7 @@
 package esprit.candidat;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -10,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("mic1/candidats")
-public class CandidatRestAPI {
+public class CandidatRESTApi {
     //simple web service for testing
     @GetMapping("/hello")
     public String sayHello() {
@@ -18,9 +19,15 @@ public class CandidatRestAPI {
     }
     @Autowired
     private CandidatService candidatService;
-    // =======================
-    // READ ALL
-    // =======================
+
+    @Value("${welcome.message}")
+    private String welcomeMessage;
+
+    @GetMapping("/welcome")
+    public String welcome() {
+        return welcomeMessage;
+    }
+
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Candidat>> listCandidat() {
         return ResponseEntity.ok(candidatService.findAll());
@@ -76,5 +83,14 @@ public class CandidatRestAPI {
             return ResponseEntity.noContent().build();
         }
         return ResponseEntity.notFound().build();
+    }
+
+    @GetMapping("/jobs")
+    public ResponseEntity<List<Job>> getAllJobs() {
+        return ResponseEntity.ok(candidatService.getAllJobs());
+    }
+    @GetMapping("/jobs/{id}")
+    public ResponseEntity<Job> getJobById(@PathVariable int id) {
+        return ResponseEntity.ok(candidatService.getJobById(id));
     }
 }

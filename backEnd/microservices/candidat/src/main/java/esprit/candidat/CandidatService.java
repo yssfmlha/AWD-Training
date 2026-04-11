@@ -1,7 +1,9 @@
 package esprit.candidat;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 import java.util.Optional;
@@ -10,6 +12,16 @@ import java.util.Optional;
 public class CandidatService {
     @Autowired
     private CandidatRepository candidatRepository;
+    private JobClient jobServiceClient;
+
+    public List<Job> getAllJobs() {
+        return jobServiceClient.getAllJobs();
+    }
+
+    public Job getJobById(int id) {
+        return jobServiceClient.getJobById(id);
+    }
+
     public List<Candidat> findAll() {
         return candidatRepository.findAll();
     }
