@@ -12,6 +12,7 @@
         <module name="candidat" />
         <module name="ConfigServer" />
         <module name="Job" />
+        <module name="job" />
         <module name="gateway" />
       </profile>
     </annotationProcessing>
@@ -24,10 +25,10 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="ConfigServer" options="-parameters" />
       <module name="Job" options="-parameters" />
-      <module name="candidat" options="-parameters" />
+      <module name="candidat" options="" />
       <module name="condidature" options="" />
       <module name="config-server" options="-parameters" />
-      <module name="eureka" options="-parameters" />
+      <module name="eureka" options="" />
       <module name="gateway" options="-parameters" />
       <module name="meeting" options="" />
       <module name="notification" options="-parameters" />
